@@ -13,8 +13,8 @@ run_autoupdate() {
 
     [ "${minute}" == "0" ] && minute="00"
     [ "${week}" == "7" ] && week="*"
-    sed -i '/Lenyu/d' /etc/crontabs/root >/dev/null 2>&1
-    echo "$minute $hour * * $week sh /usr/share/Lenyu-auto.sh -u" >>/etc/crontabs/root
+    sed -i '/dscao/d' /etc/crontabs/root >/dev/null 2>&1
+    echo "$minute $hour * * $week sh /usr/share/dscao-auto.sh -u" >>/etc/crontabs/root
   else
     sed -i '/Lenyu/d' /etc/crontabs/root >/dev/null 2>&1
   fi

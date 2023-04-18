@@ -30,9 +30,9 @@ pass=s:option(Value,"minute",translate("分钟 [0~59]"))
 pass.datatype = "range(0,59)"
 pass.rmempty = false
 
-luci.sys.call("sh /usr/share/Lenyu-version.sh > /dev/null")
+luci.sys.call("sh /usr/share/dscao-version.sh > /dev/null")
 local cloud_version = luci.sys.exec("cat /tmp/cloud_ts_version | cut -d _ -f 1")
-local current_version = luci.sys.exec("cat /etc/lenyu_version")
+local current_version = luci.sys.exec("cat /etc/dscao_version")
 local current_model = luci.sys.exec("jsonfilter -e '@.model.id' < /etc/board.json | tr ',' '_'")
 
 --local firmware_type = luci.sys.exec("grep 'DISTRIB_ARCH=' /etc/openwrt_release | cut -d \' -f 2")
@@ -42,7 +42,7 @@ translatef("点击上方 执行升级 后请耐心等待至路由器重启.") ..
 --.."<br>固件类型: " .. firmware_type
 button_upgrade_firmware.inputtitle = translate ("执行升级")
 button_upgrade_firmware.write = function()
-    luci.sys.call("sh /usr/share/Lenyu-auto.sh -u > /dev/null")
+    luci.sys.call("sh /usr/share/dscao-auto.sh -u > /dev/null")
     luci.http.header('Content-Type', 'text/html')
     luci.http.write('<script>alert("执行成功…请耐心等待至路由器重启.(若无网络或高版本号，则执行无效!).");</script>')
 end
